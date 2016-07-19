@@ -24,22 +24,38 @@
 
 #define __LIBHIF_H_INSIDE__
 
-#include <hif-context.h>
-#include <hif-db.h>
-#include <hif-goal.h>
-#include <hif-hawkey.h>
-#include <hif-keyring.h>
-#include <hif-lock.h>
-#include <hif-package.h>
-#include <hif-repos.h>
-#include <hif-rpmts.h>
-#include <hif-sack.h>
-#include <hif-source.h>
-#include <hif-state.h>
-#include <hif-transaction.h>
-#include <hif-types.h>
-#include <hif-utils.h>
-#include <hif-version.h>
+#include <libhif/hif-advisory.h>
+#include <libhif/hif-advisorypkg.h>
+#include <libhif/hif-advisoryref.h>
+#include <libhif/hif-context.h>
+#include <libhif/hif-db.h>
+#include <libhif/hif-goal.h>
+#include <libhif/hif-keyring.h>
+#include <libhif/hif-lock.h>
+#include <libhif/hif-package.h>
+#include <libhif/hif-packagedelta.h>
+#include <libhif/hif-repos.h>
+#include <libhif/hif-rpmts.h>
+#include <libhif/hif-sack.h>
+#include <libhif/hif-repo.h>
+#include <libhif/hif-state.h>
+#include <libhif/hif-transaction.h>
+#include <libhif/hif-types.h>
+#include <libhif/hif-utils.h>
+#include <libhif/hif-version.h>
+
+/* In progress conversion to hif */
+#include <libhif/hy-goal.h>
+#include <libhif/hy-nevra.h>
+#include <libhif/hy-package.h>
+#include <libhif/hy-packageset.h>
+#include <libhif/hy-query.h>
+#include <libhif/hif-reldep.h>
+#include <libhif/hif-reldep-list.h>
+#include <libhif/hy-repo.h>
+#include <libhif/hy-selector.h>
+#include <libhif/hy-subject.h>
+#include <libhif/hy-util.h>
 
 #undef __LIBHIF_H_INSIDE__
 

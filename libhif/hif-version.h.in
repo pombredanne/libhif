@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * Copyright (C) 2014 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2014-2015 Richard Hughes <richard@hughsie.com>
  *
  * Licensed under the GNU Lesser General Public License Version 2.1
  *
@@ -28,10 +28,6 @@
  * These functions are used in client code to conditionalize compilation
  * depending on the version of libhif headers installed.
  */
-
-#if !defined (__LIBHIF_H) && !defined (HIF_COMPILATION)
-#error "Only <libhif.h> can be included directly."
-#endif
 
 #ifndef __HIF_VERSION_H
 #define __HIF_VERSION_H

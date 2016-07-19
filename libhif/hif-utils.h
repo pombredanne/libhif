@@ -1,6 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
+/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
  *
- * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2015 Richard Hughes <richard@hughsie.com>
  *
  * Licensed under the GNU Lesser General Public License Version 2.1
  *
@@ -19,17 +19,17 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
  */
 
-#if !defined (__LIBHIF_H) && !defined (HIF_COMPILATION)
-#error "Only <libhif.h> can be included directly."
-#endif
-
 #ifndef __HIF_UTILS_H
 #define __HIF_UTILS_H
 
 #include <glib.h>
 
-gchar		*hif_realpath			(const gchar		*path);
-gboolean	 hif_remove_recursive		(const gchar		*directory,
-						 GError			**error);
+gchar           *hif_realpath                       (const gchar            *path);
+gboolean         hif_remove_recursive               (const gchar            *directory,
+                                                     GError                 **error);
+gboolean         hif_get_file_contents_allow_noent  (const gchar            *path,
+                                                     gchar                  **out_contents,
+                                                     gsize                  *length,
+                                                     GError                 **error);
 
 #endif /* __HIF_UTILS_H */

@@ -1,6 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
+/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
  *
- * Copyright (C) 2013-2014 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2015 Richard Hughes <richard@hughsie.com>
  *
  * Licensed under the GNU Lesser General Public License Version 2.1
  *
@@ -19,86 +19,81 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
  */
 
-#if !defined (__LIBHIF_H) && !defined (HIF_COMPILATION)
-#error "Only <libhif.h> can be included directly."
-#endif
-
 #ifndef __HIF_PACKAGE_H
 #define __HIF_PACKAGE_H
 
 #include <glib.h>
 
-#include <hawkey/package.h>
+#include "hy-package.h"
 
-#include "hif-source.h"
+#include "hif-repo.h"
 #include "hif-state.h"
 
 /**
  * HifPackageInfo:
- * @HIF_PACKAGE_INFO_UNKNOWN:			Unknown state
- * @HIF_PACKAGE_INFO_UPDATE:			Package update
- * @HIF_PACKAGE_INFO_INSTALL:			Package install
- * @HIF_PACKAGE_INFO_REMOVE:			Package remove
- * @HIF_PACKAGE_INFO_CLEANUP:			Package cleanup
- * @HIF_PACKAGE_INFO_OBSOLETE:			Package obsolete
- * @HIF_PACKAGE_INFO_REINSTALL:			Package re-install
- * @HIF_PACKAGE_INFO_DOWNGRADE:			Package downgrade
+ * @HIF_PACKAGE_INFO_UNKNOWN:                   Unknown state
+ * @HIF_PACKAGE_INFO_UPDATE:                    Package update
+ * @HIF_PACKAGE_INFO_INSTALL:                   Package install
+ * @HIF_PACKAGE_INFO_REMOVE:                    Package remove
+ * @HIF_PACKAGE_INFO_CLEANUP:                   Package cleanup
+ * @HIF_PACKAGE_INFO_OBSOLETE:                  Package obsolete
+ * @HIF_PACKAGE_INFO_REINSTALL:                 Package re-install
+ * @HIF_PACKAGE_INFO_DOWNGRADE:                 Package downgrade
  *
  * The info enum code.
  **/
 typedef enum {
-	HIF_PACKAGE_INFO_UNKNOWN			= 0,
-	HIF_PACKAGE_INFO_UPDATE				= 11,
-	HIF_PACKAGE_INFO_INSTALL			= 12,
-	HIF_PACKAGE_INFO_REMOVE				= 13,
-	HIF_PACKAGE_INFO_CLEANUP			= 14,
-	HIF_PACKAGE_INFO_OBSOLETE			= 15,
-	HIF_PACKAGE_INFO_REINSTALL			= 19,
-	HIF_PACKAGE_INFO_DOWNGRADE			= 20,
-	/*< private >*/
-	HIF_PACKAGE_INFO_LAST
+        HIF_PACKAGE_INFO_UNKNOWN                        = 0,
+        HIF_PACKAGE_INFO_UPDATE                         = 11,
+        HIF_PACKAGE_INFO_INSTALL                        = 12,
+        HIF_PACKAGE_INFO_REMOVE                         = 13,
+        HIF_PACKAGE_INFO_CLEANUP                        = 14,
+        HIF_PACKAGE_INFO_OBSOLETE                       = 15,
+        HIF_PACKAGE_INFO_REINSTALL                      = 19,
+        HIF_PACKAGE_INFO_DOWNGRADE                      = 20,
+        /*< private >*/
+        HIF_PACKAGE_INFO_LAST
 } HifPackageInfo;
 
-HifSource	*hif_package_get_source			(HyPackage	 pkg);
-void		 hif_package_set_source			(HyPackage	 pkg,
-							 HifSource	*src);
-const gchar	*hif_package_get_filename		(HyPackage	 pkg);
-void		 hif_package_set_filename		(HyPackage	 pkg,
-							 const gchar	*filename);
-const gchar	*hif_package_get_origin			(HyPackage	 pkg);
-void		 hif_package_set_origin			(HyPackage	 pkg,
-							 const gchar	*origin);
-const gchar	*hif_package_get_id			(HyPackage	 pkg);
-HifPackageInfo	 hif_package_get_info			(HyPackage	 pkg);
-void		 hif_package_set_info			(HyPackage	 pkg,
-							 HifPackageInfo	 info);
-HifStateAction	 hif_package_get_action			(HyPackage	 pkg);
-void		 hif_package_set_action			(HyPackage	 pkg,
-							 HifStateAction	 action);
-gboolean	 hif_package_get_user_action		(HyPackage	 pkg);
-void		 hif_package_set_user_action		(HyPackage	 pkg,
-							 gboolean	 user_action);
-gboolean	 hif_package_is_gui			(HyPackage	 pkg);
-gboolean	 hif_package_is_devel			(HyPackage	 pkg);
-gboolean	 hif_package_is_downloaded		(HyPackage	 pkg);
-gboolean	 hif_package_is_installonly		(HyPackage	 pkg);
-const gchar	*hif_package_get_pkgid			(HyPackage	 pkg);
-void		 hif_package_set_pkgid			(HyPackage	 pkg,
-							 const gchar	*pkgid);
-const gchar	*hif_package_get_nevra			(HyPackage	 pkg);
-const gchar	*hif_package_get_description		(HyPackage	 pkg);
-guint		 hif_package_get_cost			(HyPackage	 pkg);
-gchar		*hif_package_download			(HyPackage	 pkg,
-							 const gchar	*directory,
-							 HifState	*state,
-							 GError		**error);
-gboolean	 hif_package_check_filename		(HyPackage	 pkg,
-							 gboolean	*valid,
-							 GError		**error);
+HifRepo         *hif_package_get_repo                   (HifPackage     *pkg);
+void             hif_package_set_repo                   (HifPackage     *pkg,
+                                                         HifRepo        *repo);
+const gchar     *hif_package_get_filename               (HifPackage     *pkg);
+void             hif_package_set_filename               (HifPackage     *pkg,
+                                                         const gchar    *filename);
+const gchar     *hif_package_get_origin                 (HifPackage     *pkg);
+void             hif_package_set_origin                 (HifPackage     *pkg,
+                                                         const gchar    *origin);
+const gchar     *hif_package_get_package_id             (HifPackage     *pkg);
+HifPackageInfo   hif_package_get_info                   (HifPackage     *pkg);
+void             hif_package_set_info                   (HifPackage     *pkg,
+                                                         HifPackageInfo  info);
+HifStateAction   hif_package_get_action                 (HifPackage     *pkg);
+void             hif_package_set_action                 (HifPackage     *pkg,
+                                                         HifStateAction  action);
+gboolean         hif_package_get_user_action            (HifPackage     *pkg);
+void             hif_package_set_user_action            (HifPackage     *pkg,
+                                                         gboolean        user_action);
+gboolean         hif_package_is_gui                     (HifPackage     *pkg);
+gboolean         hif_package_is_devel                   (HifPackage     *pkg);
+gboolean         hif_package_is_downloaded              (HifPackage     *pkg);
+gboolean         hif_package_is_installonly             (HifPackage     *pkg);
+const gchar     *hif_package_get_pkgid                  (HifPackage     *pkg);
+void             hif_package_set_pkgid                  (HifPackage     *pkg,
+                                                         const gchar    *pkgid);
+guint            hif_package_get_cost                   (HifPackage     *pkg);
+gchar           *hif_package_download                   (HifPackage     *pkg,
+                                                         const gchar    *directory,
+                                                         HifState       *state,
+                                                         GError         **error);
+gboolean         hif_package_check_filename             (HifPackage     *pkg,
+                                                         gboolean       *valid,
+                                                         GError         **error);
 
-gboolean	 hif_package_array_download		(GPtrArray	*packages,
-							 const gchar	*directory,
-							 HifState	*state,
-							 GError		**error);
+gboolean         hif_package_array_download             (GPtrArray      *packages,
+                                                         const gchar    *directory,
+                                                         HifState       *state,
+                                                         GError         **error);
+guint64          hif_package_array_get_download_size    (GPtrArray      *packages);
 
 #endif /* __HIF_PACKAGE_H */

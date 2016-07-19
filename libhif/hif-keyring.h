@@ -1,6 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
+/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
  *
- * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2015 Richard Hughes <richard@hughsie.com>
  *
  * Licensed under the GNU Lesser General Public License Version 2.1
  *
@@ -19,10 +19,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
  */
 
-#if !defined (__LIBHIF_H) && !defined (HIF_COMPILATION)
-#error "Only <libhif.h> can be included directly."
-#endif
-
 #ifndef __HIF_KEYRING_H
 #define __HIF_KEYRING_H
 
@@ -30,13 +26,13 @@
 
 #include <rpm/rpmkeyring.h>
 
-gboolean	 hif_keyring_add_public_key	(rpmKeyring		 keyring,
-						 const gchar		*filename,
-						 GError			**error);
-gboolean	 hif_keyring_add_public_keys	(rpmKeyring		 keyring,
-						 GError			**error);
-gboolean	 hif_keyring_check_untrusted_file (rpmKeyring		 keyring,
-						 const gchar		*filename,
-						 GError			**error);
+gboolean         hif_keyring_add_public_key     (rpmKeyring              keyring,
+                                                 const gchar            *filename,
+                                                 GError                 **error);
+gboolean         hif_keyring_add_public_keys    (rpmKeyring              keyring,
+                                                 GError                 **error);
+gboolean         hif_keyring_check_untrusted_file (rpmKeyring            keyring,
+                                                 const gchar            *filename,
+                                                 GError                 **error);
 
 #endif /* __HIF_KEYRING_H */

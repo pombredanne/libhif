@@ -1,6 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
+/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
  *
- * Copyright (C) 2013 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2015 Richard Hughes <richard@hughsie.com>
  *
  * Licensed under the GNU Lesser General Public License Version 2.1
  *
@@ -19,21 +19,22 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
  */
 
-#if !defined (__LIBHIF_H) && !defined (HIF_COMPILATION)
-#error "Only <libhif.h> can be included directly."
-#endif
-
 #ifndef __HIF_GOAL_H
 #define __HIF_GOAL_H
 
 #include <glib.h>
 
-#include <hawkey/goal.h>
-#include <hawkey/package.h>
+#include "hy-goal.h"
+#include "hy-package.h"
 
-gboolean	 hif_goal_depsolve			(HyGoal		 goal,
-							 GError		**error);
-GPtrArray	*hif_goal_get_packages			(HyGoal		 goal,
-							 ...);
+gboolean         hif_goal_depsolve                      (HyGoal          goal,
+                                                         HifGoalActions  flags,
+                                                         GError          **error);
+GPtrArray       *hif_goal_get_packages                  (HyGoal          goal,
+                                                         ...);
+void             hif_goal_add_protected                 (HyGoal goal,
+                                                         HifPackageSet  *pset);
+void             hif_goal_set_protected                 (HyGoal goal,
+                                                         HifPackageSet  *pset);
 
 #endif /* __HIF_GOAL_H */
